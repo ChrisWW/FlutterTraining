@@ -37,35 +37,28 @@ class _MyAppState extends State<MyApp> {
   ];
 
   void _answerQuestion() {
-    if (_questionIndex < questions.length - 1) {
+    if (_questionIndex < questions.length) {
       setState(() {
         _questionIndex = _questionIndex + 1;
       });
     } else {
-      Fluttertoast.showToast(
-          msg: "We are out of questions, thank you for Quizz",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          timeInSecForIosWeb: 2,
-          backgroundColor: Colors.white60,
-          textColor: Colors.blueGrey,
-          fontSize: 16.0);
+      print('End of the quizz');
     }
   }
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('Quizzzz')),
-        body: Column(children: [
-          Question(questions[_questionIndex]['questionText']),
-          ...(questions[_questionIndex]['answers'] as List<String>)
-              .map((answer) {
-            return Answer(_answerQuestion, answer);
-          }).toList()
-        ]),
-      ),
-    );
+    @override
+    Widget build(BuildContext context) {
+      return MaterialApp(
+        home: Scaffold(
+          appBar: AppBar(title: Text('Quizzzz')),
+          body: _questionIndex < (questions.length) ? Column(children: [
+            Question(questions[_questionIndex]['questionText']),
+            ...(questions[_questionIndex]['answers'] as List<String>)
+                .map((answer) {
+              return Answer(_answerQuestion, answer);
+            }).toList()
+          ]) : Center(child: Text('You did it!')),
+        ),
+      );
+    }
   }
-}
