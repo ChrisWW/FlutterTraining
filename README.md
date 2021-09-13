@@ -1,6 +1,7 @@
 # flutter_app_training
 
 A new Flutter application.
+different branch -> different application
 
 ## Getting Started
 
