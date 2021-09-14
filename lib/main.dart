@@ -39,8 +39,10 @@ class _MyAppState extends State<MyApp> {
     {
       'questionText': 'What\'s your favourite animal?',
       'answers': [
-        {'text': 'Rabbit', 'score': 1}, {'text': 'Snake', 'score': 1},
-        {'text': 'Dog', 'score': 2}, {'text': 'Cat', 'score': 3}
+        {'text': 'Rabbit', 'score': 1},
+        {'text': 'Snake', 'score': 1},
+        {'text': 'Dog', 'score': 2},
+        {'text': 'Cat', 'score': 3}
       ],
     },
   ];
@@ -67,7 +69,7 @@ class _MyAppState extends State<MyApp> {
                 answerQuestion: _answerQuestion,
                 questionIndex: _questionIndex,
                 questions: _questions)
-            : Result(),
+            : Result(_totalScore),
       ),
     );
   }
